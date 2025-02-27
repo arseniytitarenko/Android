@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="inputHint">Введите текст</string>
+    <string name="textViewStartOutput">Здесь будет введённый вами текст</string>
+    <string name="buttonText">Выведи мой текст</string>
+    <string name="fio">Титаренко Арсений Владимирович - БПИ-2310</string>
+</resources>
