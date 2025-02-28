@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="inputNameHint">Введите имя</string>
+    <string name="buttonFirstText">Дальше</string>
+    <string name="textFirstActivity">Первый экран</string>
+    <string name="FIO">Титаренко Арсений Владимирович БПИ-2310</string>
+</resources>
