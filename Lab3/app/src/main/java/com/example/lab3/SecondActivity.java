@@ -16,7 +16,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Button button = findViewById(R.id.buttonBack);
-        TextView text = findViewById(R.id.textViewOutput);
+        TextView text = findViewById(R.id.nameOutput);
         text.setText(getIntent().getExtras().getString("name"));
 
         button.setOnClickListener(new View.OnClickListener() {
