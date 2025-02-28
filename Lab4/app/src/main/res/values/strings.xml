@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab4</string>
+    <string name="fio">Титаренко Арсений Владимирович - БПИ-2310</string>
+    <string name="textStyle">Поле с текстом для проверки стиля</string>
+    <string name="buttonText">Кнопка для проверки темы</string>
+    <string name="textTheme">Поле с текстом для проверки темы</string>
+    <string name="textAnotherStyle">Поле с текстом для проверки подстиля</string>
+    <string name="buttonTxt">Кнопка</string>
+    <string name="txt">Текст для проверки стилей</string>
+</resources>
