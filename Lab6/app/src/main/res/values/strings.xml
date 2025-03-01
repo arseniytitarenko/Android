@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab6</string>
+    <string name="buttonText">Увеличить кнопку</string>
+    <string name="fio">Титаренко Арсений Владимирович БПИ-2310</string>
+</resources>
