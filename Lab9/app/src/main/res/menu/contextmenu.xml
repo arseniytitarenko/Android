@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/color_red" android:title="Красный" />
+    <item android:id="@+id/color_black" android:title="Чёрный" />
+    <item android:id="@+id/increase_font" android:title="Увеличить шрифт" />
+    <item android:id="@+id/decrease_font" android:title="Уменьшить шрифт" />
+</menu>
