@@ -7,12 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="381dp"
-        android:layout_height="634dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/review1"
+        android:layout_width="350dp"
+        android:layout_height="670dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
