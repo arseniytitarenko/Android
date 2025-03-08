@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
     private void setData(){
-        images.add(new Image ("cat1", R.drawable.pic1));
-        images.add(new Image ("cat2", R.drawable.pic2));
-        images.add(new Image ("mycat", R.drawable.pic3));
-        images.add(new Image ("nyancat", R.drawable.pic4));
-        images.add(new Image ("ncat", R.drawable.pic5));
+        images.add(new Image ("Рим", R.drawable.pic1));
+        images.add(new Image ("Милан", R.drawable.pic2));
+        images.add(new Image ("Неаполь", R.drawable.pic3));
+        images.add(new Image ("Палермо", R.drawable.pic4));
+        images.add(new Image ("Москва", R.drawable.pic5));
     }
 }

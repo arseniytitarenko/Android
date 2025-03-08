@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lab5New</string>
+    <string name="city">Города</string>
+    <string name="fio">Титаренко Арсений Владимирович БПИ-2310</string>
 </resources>
