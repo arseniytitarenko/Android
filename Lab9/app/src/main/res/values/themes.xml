@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Lab9" parent="Theme.Material3.DayNight">
+        <!-- Можно настроить светлую тему здесь -->
+    </style>
+
+    <style name="Theme.Lab9" parent="Base.Theme.Lab9" />
+</resources>

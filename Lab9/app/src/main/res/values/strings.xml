@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab9</string>
+    <string name="text">Текст для проверки работы меню</string>
+    <string name="fio">Титаренко Арсений Владимирович БПИ-2310</string>
+</resources>
