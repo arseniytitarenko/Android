@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AlertDialog;
@@ -24,28 +25,29 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    private MediaPlayer mediaPlayer;
+    private FloatingActionButton fab;
+    private boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        fab = findViewById(R.id.fab);
+        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.tchaikovsky);
 
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.tchaikovsky);
+        fab.setOnClickListener(view -> {
+            if (isPlaying) {
+                mediaPlayer.pause();
+                fab.setImageResource(android.R.drawable.ic_media_play);
+            } else {
                 mediaPlayer.start();
+                fab.setImageResource(android.R.drawable.ic_media_pause);
+                Snackbar.make(view, "You should hear a sound", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
+            isPlaying = !isPlaying;
         });
     }
 
@@ -80,12 +82,5 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }
