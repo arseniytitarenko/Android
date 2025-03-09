@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lab13</string>
+    <string name="about">О программе\n</string>
 </resources>
