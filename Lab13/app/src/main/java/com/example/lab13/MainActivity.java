@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             showOrientationTip();
+            showActionBar();
+        } else {
+            hideActionBar();
         }
     }
 
@@ -66,6 +69,18 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+    private void showActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().show();
+        }
+    }
+
+    private void hideActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -78,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
             try {
-                dialog.setMessage(getTitle().toString()+ " версия "+
-                        getPackageManager().getPackageInfo(getPackageName(),0).versionName +
+                dialog.setMessage(getTitle().toString() + " версия " +
+                        getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
                         "\r\n\nПрограмма с воспроизведением звука \r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
@@ -91,5 +106,15 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            hideActionBar();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            showActionBar();
+        }
     }
 }
