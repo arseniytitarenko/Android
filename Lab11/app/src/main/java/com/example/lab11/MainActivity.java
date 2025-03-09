@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -32,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button);
+
+        final EditText editText = findViewById(R.id.editText);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 requestMultiplePermissions();
                 Context context = MainActivity.this;
-                NotificationChannel newnotchan= null;
-                newnotchan= new NotificationChannel("mychannel1","mychannel",
+                NotificationChannel newnotchan = new NotificationChannel("mychannel1","mychannel",
                         NotificationManager.IMPORTANCE_HIGH);
                 AudioAttributes audioAttributes = new AudioAttributes.Builder()
                             .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -50,15 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.createNotificationChannel(newnotchan);
 
-                Notification notification = null;
-                notification = new Notification.Builder(context,"mychannel1")
-                            .setContentTitle("Reminder")
-                            .setContentText("Have a good day!")
-                            .setTicker("new notification!")
-                            .setChannelId("mychannel1")
-                            .setSmallIcon(android.R.drawable.ic_dialog_alert)
-                            .setOngoing(true)
-                            .build();
+                String userMessage = editText.getText().toString();
+
+                Notification notification = new Notification.Builder(context, "mychannel1")
+                        .setContentTitle("Reminder")
+                        .setContentText(userMessage)
+                        .setTicker("new notification!")
+                        .setChannelId("mychannel1")
+                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                        .setOngoing(true)
+                        .build();
                 notificationManager.notify(0, notification);
             }
         });
