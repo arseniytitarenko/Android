@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Exam5</string>
+    <string name="next">Вперёд</string>
+    <string name="back">Назад</string>
+    <string name="num">Номер фото</string>
+    <string name="about">О программе</string>
+</resources>

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             try {
                 dialog.setMessage(getTitle().toString() + " версия " +
                         getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
-                        "\r\n\nПрограмма с воспроизведением звука \r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
+                        "\r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }

@@ -1,12 +1,16 @@
 package com.example.exam3;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     weatherText.setText("Температура: " + response.body().getMain().getTemp() + "°C");
                 } else {
-                    Log.v("S", response.toString());
                     weatherText.setText("Ошибка загрузки данных");
                 }
             }
@@ -58,5 +61,32 @@ public class MainActivity extends AppCompatActivity {
                 weatherText.setText("Ошибка: " + t.getMessage());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            try {
+                dialog.setMessage(getTitle().toString() + " версия " +
+                        getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
+                        "\r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            dialog.setTitle("О программе");
+            dialog.setNeutralButton("OK", (dialog1, which) -> dialog1.dismiss());
+            dialog.setIcon(R.mipmap.ic_launcher_round);
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

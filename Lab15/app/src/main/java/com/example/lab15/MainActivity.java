@@ -78,8 +78,9 @@ public class MainActivity extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         try {
-            dialog.setMessage(getTitle() + " версия " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
-                    "\n\nПрограмма с воспроизведением звука \n\nАвтор - Титаренко Арсений Владимирович БПИ-2310");
+            dialog.setMessage(getTitle().toString() + " версия " +
+                    getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
+                    "\r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.about) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
             try {
-                dialog.setMessage(getTitle().toString()+ " версия "+
-                        getPackageManager().getPackageInfo(getPackageName(),0).versionName +
-                        "\r\n\nПрограмма с примером выполнения диалогового окна \r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
+                dialog.setMessage(getTitle().toString() + " версия " +
+                        getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
+                        "\r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
