@@ -4,4 +4,6 @@
     <string name="back">Назад</string>
     <string name="num">Номер фото</string>
     <string name="about">О программе</string>
+    <string name="photoNum">0 / 0</string>
+    <string name="open">Открыть галерею</string>
 </resources>
