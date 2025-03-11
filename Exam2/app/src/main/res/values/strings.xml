@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Exam2</string>
+    <string name="gest">Введите жест</string>
+    <string name="about">О программе</string>
+</resources>

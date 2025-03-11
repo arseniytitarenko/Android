@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/backgroundColor"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/gpsStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Статус GPS: Неизвестно"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/textview_background"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/latitudeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Широта: -"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/textview_background"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/longitudeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Долгота: -"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/textview_background"
+        android:padding="10dp"
+        android:textStyle="bold" />
+</LinearLayout>
