@@ -1,28 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/configure"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_700" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title"
         android:layout_marginBottom="8dp"
-        android:labelFor="@id/appwidget_text"
-        android:text="@string/configure" />
+        android:text="@string/url"
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/appwidget_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:layout_below="@id/title"
+        android:layout_marginTop="32dp"
+        android:autofillHints="@string/http"
+        android:hint="@string/http"
+        android:imeOptions="actionDone"
+        android:inputType="textUri"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/add_widget" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/appwidget_text"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="@string/add_widget"
+        android:textColor="@color/white"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="8dp"
+        android:elevation="4dp" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/fio"
+        android:textColor="@color/purple_700"
+        android:textSize="12sp" />
+</RelativeLayout>

@@ -17,7 +17,7 @@ public class NewAppWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://makse.site/GA/"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"));
         PendingIntent pending= PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE
         );
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);

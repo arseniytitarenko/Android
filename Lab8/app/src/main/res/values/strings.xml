@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Lab8</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="appwidget_text">👉🏻</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="fio">БПИ-2310 Титаренко Арсений Владимирович</string>
+    <string name="url">Введите URL веб-сайта:</string>
+    <string name="http">http://</string>
 </resources>
