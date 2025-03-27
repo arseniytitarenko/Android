@@ -8,11 +8,39 @@
     card_view:cardCornerRadius="4dp"
     android:layout_margin="4dp">
 
-    <TextView
-        android:id="@+id/tvItemOlympiadName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Название олимпиады"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Название олимпиады -->
+        <TextView
+            android:id="@+id/tvItemOlympiadName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Название олимпиады"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <!-- Уровень олимпиады -->
+        <TextView
+            android:id="@+id/tvItemOlympiadLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Уровень: 3"
+            android:textSize="14sp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <!-- Профиль олимпиады -->
+        <TextView
+            android:id="@+id/tvItemOlympiadProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Профиль: Математика"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"/>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
