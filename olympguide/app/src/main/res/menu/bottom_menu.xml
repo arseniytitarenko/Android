@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_olympiads"
+        android:icon="@drawable/ic_olympiad"
+        android:title="Олимпиады"/>
+    <item
+        android:id="@+id/menu_programs"
+        android:icon="@drawable/ic_program"
+        android:title="Программы"/>
+</menu>
