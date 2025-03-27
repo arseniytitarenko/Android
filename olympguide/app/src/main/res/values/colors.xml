@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="colorBackground">#F5F5F5</color>
     <color name="dividerColor">#E0E0E0</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>э
+    <color name="titleColor">#2C3E50</color>
+    <color name="linkColor">#152F42</color>
 </resources>

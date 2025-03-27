@@ -1,6 +1,7 @@
 package com.example.olympguide;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.example.olympguide.models.OlympiadDetail;
 import com.example.olympguide.network.ApiClient;
 import com.example.olympguide.network.ApiService;
 
+import java.io.IOException;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,9 +75,10 @@ public class OlympiadDetailActivity extends AppCompatActivity {
                     recyclerBenefits.setAdapter(adapter);
                 }
             }
-
             @Override
-            public void onFailure(Call<List<OlympiadBenefit>> call, Throwable t) { }
+            public void onFailure(Call<List<OlympiadBenefit>> call, Throwable t) {
+            }
         });
     }
+
 }

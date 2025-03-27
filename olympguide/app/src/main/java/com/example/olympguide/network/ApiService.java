@@ -27,9 +27,9 @@ public interface ApiService {
     @GET("program/{id}")
     Call<ProgramDetail> getProgramDetail(@Path("id") int id);
 
-    @GET("olympiads/{id}/benefits")
+    @GET("olympiad/{id}/benefits")
     Call<List<OlympiadBenefit>> getOlympiadBenefits(@Path("id") int olympiadId);
 
-    @GET("programs/{id}/benefits")
+    @GET("program/{id}/benefits")
     Call<List<ProgramBenefit>> getProgramBenefits(@Path("id") int programId);
 }

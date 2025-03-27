@@ -38,6 +38,8 @@ public class OlympiadAdapter extends RecyclerView.Adapter<OlympiadAdapter.Olympi
     public void onBindViewHolder(@NonNull OlympiadViewHolder holder, int position) {
         Olympiad olympiad = olympiads.get(position);
         holder.nameText.setText(olympiad.getName());
+        holder.levelText.setText("Уровень: " + String.valueOf(olympiad.getLevel()));
+        holder.profileText.setText("Профиль: " + olympiad.getProfile());
         holder.itemView.setOnClickListener(v -> listener.onItemClick(olympiad));
     }
 
@@ -48,9 +50,14 @@ public class OlympiadAdapter extends RecyclerView.Adapter<OlympiadAdapter.Olympi
 
     static class OlympiadViewHolder extends RecyclerView.ViewHolder {
         TextView nameText;
+        TextView levelText;
+        TextView profileText;
+
         public OlympiadViewHolder(@NonNull View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.tvItemOlympiadName);
+            levelText = itemView.findViewById(R.id.tvItemOlympiadLevel);
+            profileText = itemView.findViewById(R.id.tvItemOlympiadProfile);
         }
     }
 }

@@ -3,7 +3,7 @@
     <style name="TextHeader">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/titleColor</item>
     </style>
 
     <style name="TextSubHeader">
@@ -19,7 +19,7 @@
 
     <style name="TextLink">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/linkColor</item>
         <item name="android:autoLink">web</item>
     </style>
 </resources>
