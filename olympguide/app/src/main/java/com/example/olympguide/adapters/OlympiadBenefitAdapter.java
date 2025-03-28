@@ -1,5 +1,6 @@
 package com.example.olympguide.adapters;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,33 +38,63 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
 
     @Override
     public void onBindViewHolder(@NonNull BenefitViewHolder holder, int position) {
-        OlympiadBenefit benefit = benefits.get(position);
-        holder.tvProgramName.setText(benefit.getProgram().getName());
-        holder.tvProgramField.setText(benefit.getProgram().getField());
+        OlympiadBenefit olympiadBenefit = benefits.get(position);
+        holder.tvProgramName.setText(olympiadBenefit.getProgram().getName());
+        holder.tvProgramField.setText(olympiadBenefit.getProgram().getField());
 
-        List<Benefit> benefitList = benefit.getBenefits();
-        for (Benefit b : benefitList) {
-            List<ConfirmationSubject> confirmationSubjects = b.getConfirmation_subjects();
-            for (ConfirmationSubject subject : confirmationSubjects) {
-                String shortenedName = shortenSubjectName(subject.getSubject());
-                String buttonText = shortenedName + " | " + subject.getScore();
-                Button button = new Button(holder.itemView.getContext());
-                button.setText(buttonText);
-                button.setTextColor(Color.BLUE);
-                button.setBackgroundResource(R.drawable.button_border);
-                holder.buttonsLayout.addView(button);
-            }
+        holder.benefitsContainer.removeAllViews();
 
-            if (!b.isIs_bvi()) {
-                String fullScoreSubjects = getFullScoreSubjects(b.getFull_score_subjects());
-                holder.tvFullScoreSubjects.setText(fullScoreSubjects);
-            }
+        for (Benefit benefit : olympiadBenefit.getBenefits()) {
+            View benefitView = LayoutInflater.from(holder.itemView.getContext())
+                    .inflate(R.layout.item_benefit, holder.benefitsContainer, false);
 
-            // Отображаем минимальный класс и уровень диплома
-            holder.tvMinClass.setText("Минимальный класс: " + b.getMin_class());
-            holder.tvMinDiplomaLevel.setText("Минимум уровень диплома: " + b.getMin_diploma_level());
+            setupBenefitView(benefitView, benefit);
+            holder.benefitsContainer.addView(benefitView);
         }
     }
+
+    private void setupBenefitView(View benefitView, Benefit benefit) {
+        TextView tvBenefitType = benefitView.findViewById(R.id.tvBenefitType);
+        TextView tvMinClass = benefitView.findViewById(R.id.tvMinClass);
+        TextView tvMinDiplomaLevel = benefitView.findViewById(R.id.tvMinDiplomaLevel);
+        LinearLayout confirmationLayout = benefitView.findViewById(R.id.confirmationLayout);
+        LinearLayout fullScoreLayout = benefitView.findViewById(R.id.fullScoreLayout);
+        TextView tvConfirmationTitle = benefitView.findViewById(R.id.tvConfirmationTitle);
+        TextView tvFullScoreTitle = benefitView.findViewById(R.id.tvFullScoreTitle);
+
+        tvBenefitType.setText(benefit.isIs_bvi() ? "БВИ" : "100 баллов");
+        tvMinClass.setText("Класс: " + benefit.getMin_class());
+        tvMinDiplomaLevel.setText("Уровень: " + benefit.getMin_diploma_level());
+
+        confirmationLayout.removeAllViews();
+        if (!benefit.getConfirmation_subjects().isEmpty()) {
+            tvConfirmationTitle.setVisibility(View.VISIBLE);
+            for (ConfirmationSubject subject : benefit.getConfirmation_subjects()) {
+                Button btn = createButton(
+                        benefitView.getContext(),
+                        shortenSubjectName(subject.getSubject()) + " | " + subject.getScore()
+                );
+                confirmationLayout.addView(btn);
+            }
+        } else {
+            tvConfirmationTitle.setVisibility(View.GONE);
+        }
+
+        fullScoreLayout.removeAllViews();
+        if (!benefit.isIs_bvi() && !benefit.getFull_score_subjects().isEmpty()) {
+            tvFullScoreTitle.setVisibility(View.VISIBLE);
+            for (String subject : benefit.getFull_score_subjects()) {
+                Button btn = createButton(
+                        benefitView.getContext(),
+                        shortenSubjectName(subject)
+                );
+                fullScoreLayout.addView(btn);
+            }
+        } else {
+            tvFullScoreTitle.setVisibility(View.GONE);
+        }
+    }
+
 
     @Override
     public int getItemCount() {
@@ -75,8 +106,7 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
         TextView tvProgramField;
         TextView tvMinClass;
         TextView tvMinDiplomaLevel;
-        TextView tvFullScoreSubjects;
-        LinearLayout buttonsLayout;
+        LinearLayout benefitsContainer;
 
         public BenefitViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,8 +114,7 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
             tvProgramField = itemView.findViewById(R.id.tvProgramField);
             tvMinClass = itemView.findViewById(R.id.tvMinClass);
             tvMinDiplomaLevel = itemView.findViewById(R.id.tvMinDiplomaLevel);
-            tvFullScoreSubjects = itemView.findViewById(R.id.tvFullScoreSubjects);
-            buttonsLayout = itemView.findViewById(R.id.buttonsLayout); // контейнер для кнопок
+            benefitsContainer = itemView.findViewById(R.id.benefitsContainer);
         }
     }
 
@@ -106,12 +135,21 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
         return subjectMap.getOrDefault(subject, "N/A");
     }
 
-    private String getFullScoreSubjects(List<String> fullScoreSubjects) {
-        if (fullScoreSubjects != null && !fullScoreSubjects.isEmpty()) {
-            return String.join(", ", fullScoreSubjects);
-        } else {
-            return "Нет данных";
-        }
+    private Button createButton(Context context, String text) {
+        Button btn = new Button(context);
+        btn.setText(text);
+        btn.setTextColor(Color.parseColor("#90CAF9"));
+        btn.setBackgroundResource(R.drawable.button_border);
+        btn.setPadding(16, 8, 16, 8);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 16, 0);
+        btn.setLayoutParams(params);
+
+        return btn;
     }
 }
 
