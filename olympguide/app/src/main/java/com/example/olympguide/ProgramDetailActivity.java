@@ -115,15 +115,14 @@ public class ProgramDetailActivity extends AppCompatActivity {
         btn.setText(shortenSubjectName(subject));
         btn.setTextColor(Color.parseColor("#2196F3"));
         btn.setBackgroundResource(R.drawable.button_border);
-        btn.setPadding(32, 16, 32, 16);
+        // btn.setPadding(32, 16, 32, 16);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        params.setMargins(0, 0, 16, 0);
+        // params.setMargins(0, 0, 8, 0);
         btn.setLayoutParams(params);
-
         return btn;
     }
 
