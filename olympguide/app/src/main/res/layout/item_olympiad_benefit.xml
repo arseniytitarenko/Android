@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp"
     android:layout_margin="4dp">
 
     <LinearLayout
@@ -14,58 +14,30 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <!-- Заголовок программы -->
         <TextView
             android:id="@+id/tvProgramName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Программа"
-            style="@style/TextHeader" />
+            style="@style/TextHeader"/>
 
-        <!-- Поле программы -->
         <TextView
             android:id="@+id/tvProgramField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Поле программы"
             style="@style/TextSubHeader"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp"/>
 
-        <!-- Контейнер для кнопок -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginVertical="8dp"/>
+
         <LinearLayout
-            android:id="@+id/buttonsLayout"
+            android:id="@+id/benefitsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Льгота: Минимальный класс -->
-        <TextView
-            android:id="@+id/tvMinClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Минимальный класс"
-            style="@style/TextBody"
-            android:layout_marginTop="8dp" />
-
-        <!-- Льгота: Уровень диплома -->
-        <TextView
-            android:id="@+id/tvMinDiplomaLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Уровень диплома"
-            style="@style/TextBody"
-            android:layout_marginTop="8dp" />
-
-        <!-- Льгота: Полные баллы по предметам -->
-        <TextView
-            android:id="@+id/tvFullScoreSubjects"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Полные баллы"
-            style="@style/TextBody"
-            android:layout_marginTop="8dp" />
+            android:orientation="vertical"/>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
