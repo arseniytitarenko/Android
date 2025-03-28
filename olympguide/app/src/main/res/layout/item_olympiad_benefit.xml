@@ -14,20 +14,58 @@
         android:orientation="vertical"
         android:padding="12dp">
 
+        <!-- Заголовок программы -->
         <TextView
             android:id="@+id/tvProgramName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Программа"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            style="@style/TextHeader" />
 
+        <!-- Поле программы -->
         <TextView
-            android:id="@+id/tvBenefitDetails"
+            android:id="@+id/tvProgramField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Детали льгот"
-            android:layout_marginTop="4dp"
-            android:textSize="14sp" />
+            android:text="Поле программы"
+            style="@style/TextSubHeader"
+            android:layout_marginTop="4dp" />
+
+        <!-- Контейнер для кнопок -->
+        <LinearLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Льгота: Минимальный класс -->
+        <TextView
+            android:id="@+id/tvMinClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Минимальный класс"
+            style="@style/TextBody"
+            android:layout_marginTop="8dp" />
+
+        <!-- Льгота: Уровень диплома -->
+        <TextView
+            android:id="@+id/tvMinDiplomaLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Уровень диплома"
+            style="@style/TextBody"
+            android:layout_marginTop="8dp" />
+
+        <!-- Льгота: Полные баллы по предметам -->
+        <TextView
+            android:id="@+id/tvFullScoreSubjects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Полные баллы"
+            style="@style/TextBody"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
