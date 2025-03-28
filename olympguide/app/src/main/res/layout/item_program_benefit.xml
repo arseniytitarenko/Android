@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp"
     android:layout_margin="4dp">
 
     <LinearLayout
@@ -18,16 +18,34 @@
             android:id="@+id/tvOlympiadName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Олимпиада"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            style="@style/TextHeader"/>
 
         <TextView
-            android:id="@+id/tvBenefitDetails"
+            android:id="@+id/tvOlympiadLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Детали льгот"
-            android:layout_marginTop="4dp"
-            android:textSize="14sp" />
+            style="@style/TextBody"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvOlympiadProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextBody"
+            android:layout_marginTop="4dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginVertical="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/benefitsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

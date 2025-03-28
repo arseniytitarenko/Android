@@ -118,7 +118,7 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
         }
     }
 
-    private String shortenSubjectName(String subject) {
+    public static String shortenSubjectName(String subject) {
         Map<String, String> subjectMap = Map.ofEntries(
                 Map.entry("Русский язык", "РЯ"),
                 Map.entry("Математика", "Мат"),
@@ -135,10 +135,10 @@ public class OlympiadBenefitAdapter extends RecyclerView.Adapter<OlympiadBenefit
         return subjectMap.getOrDefault(subject, "N/A");
     }
 
-    private Button createButton(Context context, String text) {
+    public static Button createButton(Context context, String text) {
         Button btn = new Button(context);
         btn.setText(text);
-        btn.setTextColor(Color.parseColor("#90CAF9"));
+        btn.setTextColor(Color.parseColor("#2196F3"));
         btn.setBackgroundResource(R.drawable.button_border);
         btn.setPadding(16, 8, 16, 8);
 

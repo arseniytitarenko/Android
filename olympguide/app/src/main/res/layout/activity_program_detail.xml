@@ -4,43 +4,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/colorBackground">
 
     <TextView
         android:id="@+id/tvProgramDetailName"
+        style="@style/TextHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Название программы"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="30sp"
+        android:text="Название программы" />
 
     <TextView
         android:id="@+id/tvProgramDetailField"
+        style="@style/TextSubHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Код направления"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp" />
+        android:text="Код направления" />
 
-    <TextView
-        android:id="@+id/tvProgramDetailCost"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Стоимость"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+
+        <!-- Бюджетные и платные места -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextSubHeader"
+                android:text="Бюджетные места:" />
+
+            <TextView
+                android:id="@+id/tvProgramBudgetPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextBody"
+                android:layout_weight="1"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextSubHeader"
+                android:text="Платные места:" />
+
+            <TextView
+                android:id="@+id/tvProgramPaidPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextBody"
+                android:layout_weight="1"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextSubHeader"
+                android:text="Стоимость:" />
+
+            <TextView
+                android:id="@+id/tvProgramDetailCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextBody"
+                android:layout_weight="1"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextSubHeader"
+                android:text="Ссылка:" />
+
+            <TextView
+                android:id="@+id/tvProgramLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextLink"
+                android:layout_weight="1"
+                android:gravity="end"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
+        android:id="@+id/tvRequiredSubjectsTitle"
+        style="@style/TextSubHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Обязательные предметы"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layoutRequiredSubjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:divider="@drawable/divider"
+        android:showDividers="middle"/>
+
+    <TextView
+        android:id="@+id/tvOptionalSubjectsTitle"
+        style="@style/TextSubHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Дополнительные предметы"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layoutOptionalSubjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:divider="@drawable/divider"
+        android:showDividers="middle"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividerColor"
+        android:layout_marginVertical="16dp"/>
+
+    <TextView
+        style="@style/TextSubHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Льготы по олимпиадам"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:textSize="18sp" />
+        android:layout_marginBottom="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProgramBenefits"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:layout_height="wrap_content"/>
 </LinearLayout>
