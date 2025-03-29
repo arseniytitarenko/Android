@@ -8,4 +8,8 @@
         android:id="@+id/menu_programs"
         android:icon="@drawable/ic_program"
         android:title="Программы"/>
+    <item
+        android:id="@+id/menu_about"
+        android:title="О приложении"
+        android:icon="@drawable/ic_info"/>
 </menu>

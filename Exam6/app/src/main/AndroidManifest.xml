@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,16 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Exam6"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddContactActivity"/>
+        <activity
+            android:name=".AddEditContactActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

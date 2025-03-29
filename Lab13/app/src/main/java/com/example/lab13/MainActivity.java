@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 dialog.setMessage(getTitle().toString() + " версия " +
                         getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
-                        "\r\n\nАвтор - Титаренко Арсений Владимировия БПИ-2310");
+                        "\r\n\nАвтор - Титаренко Арсений Владимирович БПИ-2310");
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }

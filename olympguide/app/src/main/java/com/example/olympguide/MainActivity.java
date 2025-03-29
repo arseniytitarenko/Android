@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = new OlympiadsFragment();
             } else if (itemId == R.id.menu_programs) {
                 selectedFragment = new ProgramsFragment();
+            } else if (itemId == R.id.menu_about) {
+                selectedFragment = new AboutFragment();
             }
             if (selectedFragment != null) {
                 getSupportFragmentManager().beginTransaction()

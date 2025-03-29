@@ -1,99 +1,111 @@
 package com.example.exam6;
 
-
 import android.content.Intent;
-import android.net.Uri;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.List;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private AppDatabase db;
-    private ListView listView;
-    private Button btnAdd;
-    private List<Contact> contacts;
+    private RecyclerView recyclerView;
+    private ContactAdapter adapter;
+    private ArrayList<Contact> contacts;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = AppDatabase.getInstance(this);
-        listView = findViewById(R.id.listView);
-        btnAdd = findViewById(R.id.btnAdd);
+        recyclerView = findViewById(R.id.listView);
+        FloatingActionButton fab = findViewById(R.id.fab);
 
-        btnAdd.setOnClickListener(v -> startActivity(new Intent(this, AddContactActivity.class)));
-        loadContacts();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        databaseHelper = new DatabaseHelper(this);
+        databaseHelper.open();
+
+        contacts = databaseHelper.getAllContacts();
+        adapter = new ContactAdapter(this, contacts);
+
+        adapter.setOnContactLongClickListener(contact -> {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("Удалить контакт")
+                    .setMessage("Вы уверены, что хотите удалить " + contact.getName() + "?")
+                    .setPositiveButton("Удалить", (dialog, which) -> {
+                        databaseHelper.deleteContact(contact.getId());
+                        contacts = databaseHelper.getAllContacts();
+                        adapter.updateContacts(contacts);
+                    })
+                    .setNegativeButton("Отмена", null)
+                    .show();
+        });
+        recyclerView.setAdapter(adapter);
+
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddEditContactActivity.class);
+            startActivityForResult(intent, 1);
+        });
     }
 
-    private void loadContacts() {
-        contacts = db.contactDao().getAll();
-        listView.setAdapter(new ContactAdapter());
-    }
-
-    private class ContactAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return contacts.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return contacts.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return contacts.get(position).id;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            Contact contact = (Contact) data.getSerializableExtra("contact");
+            if (contact.getId() == 0) {
+                long id = databaseHelper.addContact(contact);
+                contact.setId((int) id);
+                contacts.add(contact);
+            } else {
+                databaseHelper.updateContact(contact);
+                contacts = databaseHelper.getAllContacts();
             }
-
-            Contact contact = contacts.get(position);
-            TextView textName = convertView.findViewById(R.id.textName);
-            TextView textPhone = convertView.findViewById(R.id.textPhone);
-            Button btnCall = convertView.findViewById(R.id.btnCall);
-            Button btnSms = convertView.findViewById(R.id.btnSms);
-
-            textName.setText(contact.name);
-            textPhone.setText(contact.phone);
-
-            btnCall.setOnClickListener(v -> {
-                Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + contact.phone));
-                startActivity(callIntent);
-            });
-
-            btnSms.setOnClickListener(v -> {
-                Intent smsIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + contact.phone));
-                smsIntent.putExtra("sms_body", "Привет!");
-                startActivity(smsIntent);
-            });
-
-            convertView.setOnLongClickListener(v -> {
-                db.contactDao().delete(contact);
-                loadContacts();
-                return true;
-            });
-
-            return convertView;
+            adapter.updateContacts(contacts);
         }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        loadContacts();
+    protected void onDestroy() {
+        super.onDestroy();
+        databaseHelper.close();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            try {
+                dialog.setMessage(getTitle().toString() + " версия " +
+                        getPackageManager().getPackageInfo(getPackageName(), 0).versionName +
+                        "\r\n\nАвтор - Титаренко Арсений Владимирович БПИ-2310");
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            dialog.setTitle("О программе");
+            dialog.setNeutralButton("OK", (dialog1, which) -> dialog1.dismiss());
+            dialog.setIcon(R.mipmap.ic_launcher_round);
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
-

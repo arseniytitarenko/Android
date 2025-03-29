@@ -1,4 +1,4 @@
-package com.lab16fb.lab16;
+package com.example.lab16;
 
 import org.junit.Test;
 

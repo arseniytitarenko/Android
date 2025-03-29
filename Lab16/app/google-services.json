@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1097532592680",
-    "project_id": "lab16-6666f",
-    "storage_bucket": "lab16-6666f.firebasestorage.app"
+    "project_number": "273899437779",
+    "project_id": "lab16-79e50",
+    "storage_bucket": "lab16-79e50.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1097532592680:android:19aa06d679891c69b21b1d",
+        "mobilesdk_app_id": "1:273899437779:android:b5ef6977ece85389c61e26",
         "android_client_info": {
-          "package_name": "com.lab16fb.lab16"
+          "package_name": "com.example.lab16"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDtJwSHn6dC7YY3fL3t2U4trR9BC7VZjQQ"
+          "current_key": "AIzaSyBFvmZje1ihkR-Q3brf6V9lDU6hSEXtrD8"
         }
       ],
       "services": {
