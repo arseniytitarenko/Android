@@ -12,15 +12,21 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
     @GET("olympiads")
-    Call<List<Olympiad>> getOlympiads();
+    Call<List<Olympiad>> getOlympiads(
+            @Query("search") String search,
+            @Query("level") List<String> levels
+    );
 
     @GET("university/1/programs/by-faculty")
-    Call<List<ProgramGroup>> getProgramGroups();
-
+    Call<List<ProgramGroup>> getProgramGroups(
+            @Query("search") String search,
+            @Query("degree") List<String> degrees
+    );
     @GET("olympiad/{id}")
     Call<OlympiadDetail> getOlympiadDetail(@Path("id") int id);
 

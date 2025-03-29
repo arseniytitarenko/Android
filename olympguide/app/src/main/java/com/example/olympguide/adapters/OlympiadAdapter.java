@@ -48,6 +48,12 @@ public class OlympiadAdapter extends RecyclerView.Adapter<OlympiadAdapter.Olympi
         return olympiads.size();
     }
 
+    public void updateData(List<Olympiad> newOlympiads) {
+        olympiads.clear();
+        olympiads.addAll(newOlympiads);
+        notifyDataSetChanged();
+    }
+
     static class OlympiadViewHolder extends RecyclerView.ViewHolder {
         TextView nameText;
         TextView levelText;

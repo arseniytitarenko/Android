@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">OlympGuide</string>
+    <string name="select_degree">Выберите степень</string>
+    <string-array name="degree_types">
+        <item>Все</item>
+        <item>Бакалавриат</item>
+        <item>Специалитет</item>
+    </string-array>
+    <string name="select_level">Выберите уровень</string>
+    <string-array name="olympiad_levels">
+        <item>Все уровни</item>
+        <item>1 уровень</item>
+        <item>2 уровень</item>
+        <item>3 уровень</item>
+    </string-array>
 </resources>
